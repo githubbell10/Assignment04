@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ad85f50bc11f38340ba2ef735051d5d1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SpikeImpact: {instanceID: 0}
+  - HowieScream: {fileID: 8300000, guid: 7eba0d9be28c5c7408fb7c5016b662b2, type: 3}
+  - rb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip SpikeImpact;
+    public AudioClip HowieScream;
     private bool isPinned = false;
-
     public float speed = 20f;
     public Rigidbody2D rb;
 
@@ -13,6 +15,7 @@ public class Pin : MonoBehaviour
     {
         if (!isPinned)
             rb.MovePosition(rb.position + Vector2.up * speed * Time.deltaTime);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -22,10 +25,18 @@ public class Pin : MonoBehaviour
             transform.SetParent(col.transform);
             Score.PinCount++;
             isPinned = true;
+            audioSource.PlayOneShot(SpikeImpact);
         }
         else if (col.tag == "Pin")
         {
+            Debug.Log("rounds: " + KeepData.RoundsPlayed.ToString());
+            if (KeepData.HighScore < KeepData.PlayerScore)
+            {
+                KeepData.HighScore = KeepData.PlayerScore;
+            }
+            
             FindObjectOfType<GameManager>().EndGame();
+           audioSource.PlayOneShot(HowieScream);
         }
     }
 }
